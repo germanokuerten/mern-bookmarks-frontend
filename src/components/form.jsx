@@ -1,8 +1,8 @@
 import { useState } from "react"
 
 
-export default function Form(){
-    const [form, setForm] = useState({
+export default function Form({createBookmark}){
+    const [bookmark, setBookmark] = useState({
         title: "",
         url: ""
     })
@@ -11,17 +11,16 @@ export default function Form(){
 
     function handleChange(event){
         const updatedForm = {
-            ...form,
+            ...bookmark,
             [event.target.name]: event.target.value
         }
         console.log(updatedForm)
-        setForm(updatedForm)
+        setBookmark(updatedForm)
     }
 
     function handleSubmit(event){
         event.preventDefault()
-        console.log('button')
-
+        createBookmark(bookmark)
     }
 
 
@@ -30,14 +29,14 @@ export default function Form(){
             <input 
                 type="text"
                 name="title"
-                value={form.title}
+                value={bookmark.title}
                 placeholder="Website"
                 onChange={handleChange}
             />
             <input 
                 type="text"
                 name="url"
-                value={form.url}
+                value={bookmark.url}
                 placeholder="http://"
                 onChange={handleChange}
             />

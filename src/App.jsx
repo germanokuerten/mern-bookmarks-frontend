@@ -8,7 +8,7 @@ function App() {
   const[bookmarks, setBookmarks] = useState(null)
   const url = 'https://buenas-noches-backend.herokuapp.com/'
 
-  
+  console.log(bookmarks)
   // const getBookmarks = async () =>{
   //   const data = await fetch(url+'bookmark').then(res => res.json())
   //     console.log(data)
