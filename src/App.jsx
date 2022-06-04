@@ -41,6 +41,33 @@ function App() {
     }
   }
 
+  async function handleDelete(id){
+    try {
+      await fetch(url+"bookmark/"+id,{
+        method:"DELETE",
+      })
+      getBookmarks()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  async function handleUpdate(bookmark,id){
+    try {
+      await fetch(url+"bookmark/"+id,{
+        method: 'PUT',
+        headers:{
+          'Content-Type':'Application/json'
+        },
+        body: JSON.stringify(bookmark)
+      })
+      getBookmarks()
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   useEffect(()=>{getBookmarks()},[])
 
@@ -48,7 +75,11 @@ function App() {
     <div className="App">
       <Header/>
       <Form createBookmark={createBookmark}/>
-      <Body bookmarks={bookmarks}/>
+      <Body 
+        bookmarks={bookmarks}
+        handleDelete={handleDelete}
+        handleUpdate={handleUpdate}
+      />
     </div>
   );
 }
