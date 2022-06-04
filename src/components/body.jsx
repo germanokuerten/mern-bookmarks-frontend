@@ -1,5 +1,21 @@
-export default function Body(){
+import { Link } from "react-router-dom"
+
+export default function Body({bookmarks}){
     return(
-        <h1>this is te body</h1>
+        <div className="bookmark-container">
+            {bookmarks?.map(bookmark=>{
+                return(
+                    <div className="bookmark-card">
+                        <a href={bookmark.url}>
+                        <h4>{bookmark.title}</h4>
+                        </a>
+                        
+                    </div>
+                )
+            })
+
+            }
+
+        </div>
     )
 }
