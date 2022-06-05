@@ -1,13 +1,13 @@
+
+
 import { Link } from "react-router-dom"
-import { useState } from "react"
-import Update from "./update"
 
 
 export default function Body({bookmarks, handleDelete, handleUpdate}){
-    const [updated, setUpdate] = useState({
-        title:"",
-        url: ""
-    })
+    // const [updated, setUpdate] = useState({
+    //     title:"",
+    //     url: ""
+    // })
 
 
     return(
@@ -18,15 +18,11 @@ export default function Body({bookmarks, handleDelete, handleUpdate}){
                         <a href={bookmark.url}>
                         <h4>{bookmark.title}</h4>
                         </a>
-                        <Update 
-                            handleUpdate={handleUpdate}
-                            title={bookmark.title}
-                            url ={bookmark.url}
-                        />
-                        <br />
-                        <br />
 
-                        <button onClick={()=>handleUpdate()}>Edit</button>
+
+                        <Link to={`/bookmark/${bookmark._id}`}>
+                        <button>Edit</button>
+                        </Link>
                         <button onClick={()=>handleDelete(bookmark._id)}>x</button>    
                     </div>
                 )

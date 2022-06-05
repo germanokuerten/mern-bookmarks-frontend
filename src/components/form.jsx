@@ -16,11 +16,16 @@ export default function Form({createBookmark}){
         }
         console.log(updatedForm)
         setBookmark(updatedForm)
+
     }
 
     function handleSubmit(event){
         event.preventDefault()
         createBookmark(bookmark)
+        setBookmark({
+            title:"",
+            url:""
+        })
     }
 
 
